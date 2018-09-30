@@ -1,0 +1,13 @@
+.deskTable {
+  border-collapse: collapse;
+}
+
+.blank {
+  border: 1px solid #aaaaaa;
+}
+
+.desk {
+  border: 2px solid black;
+  background: #cc9900;
+  font-weight: bold;
+}
