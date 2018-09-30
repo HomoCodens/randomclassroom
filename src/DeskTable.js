@@ -3,13 +3,13 @@ import './DeskTable.css'
 
 class DeskTable extends React.Component {
   getDeskInfo = (r, c) => {
-    const { desks } = this.props;
+    const { desks, students } = this.props;
     for(let i = 0; i < desks.length; i++) {
       const desk = desks[i];
       if(desk.row === r && desk.col === c) {
         return ({
           class: 'desk',
-          name: desk.name
+          name: students[desk.student]
         });
       }
     }

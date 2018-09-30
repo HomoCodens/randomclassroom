@@ -24,21 +24,21 @@ class App extends Component {
           nRow: 5,
           nCol: 5,
           desks: [
-            { row: 0, col: 0, name: '' },
-            { row: 0, col: 1, name: '' },
-            { row: 0, col: 2, name: '' },
-            { row: 0, col: 3, name: '' },
-            { row: 0, col: 4, name: '' },
-            { row: 2, col: 0, name: '' },
-            { row: 2, col: 1, name: '' },
-            { row: 2, col: 2, name: '' },
-            { row: 2, col: 3, name: '' },
-            { row: 2, col: 4, name: '' },
-            { row: 4, col: 0, name: '' },
-            { row: 4, col: 1, name: '' },
-            { row: 4, col: 2, name: '' },
-            { row: 4, col: 3, name: '' },
-            { row: 4, col: 4, name: '' },
+            { row: 0, col: 0, student: null },
+            { row: 0, col: 1, student: null },
+            { row: 0, col: 2, student: null },
+            { row: 0, col: 3, student: null },
+            { row: 0, col: 4, student: null },
+            { row: 2, col: 0, student: null },
+            { row: 2, col: 1, student: null },
+            { row: 2, col: 2, student: null },
+            { row: 2, col: 3, student: null },
+            { row: 2, col: 4, student: null },
+            { row: 4, col: 0, student: null },
+            { row: 4, col: 1, student: null },
+            { row: 4, col: 2, student: null },
+            { row: 4, col: 3, student: null },
+            { row: 4, col: 4, student: null },
           ]
         };
       }
@@ -50,7 +50,7 @@ class App extends Component {
     let newDesks = desks.filter((e, i, a) => !(e.row === r && e.col === c));
     // No desks was filtered -> we need to add it
     if(newDesks.length === desks.length) {
-      newDesks = [...newDesks, { row: r, col: c, name: ''}];
+      newDesks = [...newDesks, { row: r, col: c, student: null}];
     }
     this.setState({
       desks: newDesks
@@ -101,7 +101,7 @@ class App extends Component {
       return {
         row,
         col,
-        name: ''
+        student: null
       }
     });
 
@@ -109,8 +109,10 @@ class App extends Component {
     indices = this.shuffle(indices);
 
     for(let i = 0; i < students.length; i++) {
-      newDesks[indices[i]].name = students[i];
+      newDesks[indices[i]].student = i;
     }
+
+console.log(newDesks);
 
     this.setState({
       desks: newDesks
@@ -170,6 +172,7 @@ class App extends Component {
           nRow={nRow}
           nCol={nCol}
           desks={desks}
+          students={students}
         />
         <div style={{float: 'right'}}>
           <div>
